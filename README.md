@@ -49,23 +49,22 @@ Please refer https://pytorch.org/get-started/locally/ and https://pytorch.org/ge
 
 
 4. Dataset Preparation
-
    a. MDKP
-      - Dataset made in the fly.
+      - Dataset made on the fly.
 
    b. GFPS
-      - Go to `MDKP/create_dataset.py`, and set the `NUM_PROC_LIST` and `NUM_TASKS_LIST` variables.
+      - Go to `mdkp/create_dataset.py`, and set the `NUM_PROC_LIST` and `NUM_TASKS_LIST` variables.
       - Run `create_dataset.py`, then the dataset will be stored in `../gfpsdata/tr, te, val`.
 
 
 5. Global model train.
    a. MDKP
       - Run `train.py --num_items 200 --item_dim 20 --w 300 --c 0`. Add `--use_cuda` if possible.
-      - Model will be saved in `../mdkpmodels/globalrl`
+      - Model will be saved in `./mdkpmodels/globalrl`
 
    b. GFPS
       - Run `train.py --num_tasks 32 --num_procs 4`, or according to your dataset created.
-      - Model will be saved in `../gfpsmodels/globalrl`
+      - Model will be saved in `./gfpsmodels/globalrl`
 
 6. Model train.
    Each model will be trained by tuning the global model.
