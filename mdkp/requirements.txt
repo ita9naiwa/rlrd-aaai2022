@@ -1,3 +1,0 @@
-Cython==0.29.22
-torch
-ortools

@@ -10,7 +10,7 @@ from engine import train_distilation
 ZERO_ONE_LOSS = True
 
 def main():
-    directory = os.path.dirname("../knapsackmodels/distillation/")
+    directory = os.path.dirname("../mdkpmodels/distillation/")
     if not os.path.exists(directory):
         os.makedirs(directory)
 
@@ -27,7 +27,7 @@ def main():
         args.item_dim, args.embed_dim, args.use_cuda,
     )
 
-    with open("../knapsackmodels/localrl/"
+    with open("../mdkpmodels/localrl/"
               + file_name
               + ".torchmodel", "rb") as f:
         tmp = torch.load(f)
@@ -40,7 +40,7 @@ def main():
     Student.load_state_dict(Teacher.state_dict(), strict=False)
 
     if args.load:
-        with open("../knapsackmodels/distillation/"
+        with open("../mdkpmodels/distillation/"
                   + saving_file_name + ".torchmodel", "rb") as f:
             tmp = torch.load(f)
         Student.load_state_dict(tmp.state_dict())
@@ -74,7 +74,7 @@ def main():
             avg_loss = 0.95 * avg_loss + 0.05 * loss
         print(avg_loss)
         if epoch % 100 == 0:
-            torch.save(Student, f="../knapsackmodels/distillation/" + saving_file_name + ".torchmodel")
+            torch.save(Student, f="../mdkpmodels/distillation/" + saving_file_name + ".torchmodel")
 
 
 if __name__ == "__main__":

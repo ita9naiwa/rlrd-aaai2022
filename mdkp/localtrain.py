@@ -4,11 +4,11 @@ from engine import *
 
 
 def main():
-    directory = os.path.dirname("../knapsackmodels/localrl/")
+    directory = os.path.dirname("../mdkpmodels/localrl/")
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-    global_name = "RL-it100-dim10-w200-c0.00"
+    global_name = "RL-it200-dim20-w200-c0.00"
     # c = 0 --> Uncorrelated
     # c = 1 --> Correlated
     file_name = "LRL-it%d-dim%d-w%d-c%.2f" % (
@@ -28,11 +28,11 @@ def main():
         bl = Att_Policy(args.item_dim, args.embed_dim, args.use_cuda)
 
     policy.load_finetune_checkpoint(
-        "../knapsackmodels/globalrl/"+global_name+".torchmodel"
+        "../mdkpmodels/globalrl/"+global_name+".torchmodel"
     )
 
     if args.load:
-        with open("../knapsackmodels/localrl/" + file_name + ".torchmodel", "rb") as f:
+        with open("../mdkpmodels/localrl/" + file_name + ".torchmodel", "rb") as f:
             tmp = torch.load(f)
         policy.load_state_dict(tmp.state_dict())
 
@@ -77,7 +77,7 @@ def main():
         second = int(elapsed - 60 * minute)
         print("경과시간 : {}m{:}s".format(minute, second))
 
-        torch.save(policy, "../knapsackmodels/localrl/" + file_name + ".torchmodel")
+        torch.save(policy, "../mdkpmodels/localrl/" + file_name + ".torchmodel")
 
 
 if __name__ == "__main__":

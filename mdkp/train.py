@@ -5,7 +5,7 @@ from engine import *
 
 
 def main():
-    directory = os.path.dirname("../knapsackmodels/globalrl/")
+    directory = os.path.dirname("../mdkpmodels/globalrl/")
     if not os.path.exists(directory):
         os.makedirs(directory)
 
@@ -79,8 +79,7 @@ def main():
         # if early_stopping.early_stop:
         #     exit(0)
 
-
-        torch.save(policy, "../knapsackmodels/globalrl/" + file_name + ".torchmodel")
+        torch.save(policy, "../mdkpmodels/globalrl/" + file_name + ".torchmodel")
 
 
 if __name__ == "__main__":
