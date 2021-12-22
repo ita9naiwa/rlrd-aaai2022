@@ -7,7 +7,7 @@ We assume that you have installed Python using [Anaconda](https://docs.anaconda.
 
 We use Python, PyTorch with CUDA as the backend for our ML implementations.
    * Python >= 3.6
-   * PyTorch >= 1.5.0
+   * PyTorch >= 1.8.0
    * CUDA >= 10.1
 
 We use the packages as listed below(alphabetical order):
@@ -36,8 +36,8 @@ We divided our implementation into two discrete directories, `mdkp/` for MDKP, a
 
 
 2. Install PyTorch with CUDA.
-For Conda: `conda install pytorch==1.5.0 torchvision==0.6.0 cudatoolkit=10.1 -c pytorch`
-For usual Python: `pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html`
+For Conda: `conda install pytorch==1.8.0 torchvision==0.6.0 cudatoolkit=10.1 -c pytorch`
+For usual Python: `pip install torch==1.8.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html`
 These commands will install appropriate PyTorch with Cuda 10.1 version as the same environment as we test.
 Please refer https://pytorch.org/get-started/locally/ and https://pytorch.org/get-started/previous-versions/ to see appropriate PyTorch version for your environment.
 
@@ -58,6 +58,13 @@ Please refer https://pytorch.org/get-started/locally/ and https://pytorch.org/ge
 
 
 5. Global model train.
+   ```
+   For MDKP, 
+      num_items: A number of items we should package.
+      item_dim: Dimension of weights for each item. Constraints are on each dimension.
+      w: Weight of each item is sampled in Uniform([0, w])
+      c: A correlation parameter, corresponding to "alpha" in the main paper.
+   ```
    a. MDKP
       - Run `train.py --num_items 200 --item_dim 20 --w 300 --c 0`. Add `--use_cuda` if possible.
       - Model will be saved in `./mdkpmodels/globalrl`
